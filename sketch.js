@@ -51,7 +51,7 @@ function tracePoints(txt, x, y, sz, opt) {
 // SETUP: CREATE INITIAL POINT PATH, CALCULATE FOURIER
 function setup() {
   frameRate(50)
-  createCanvas(2000, 2000);
+  createCanvas(1000, 1000);
   
   pts = createTextPoints();
   
