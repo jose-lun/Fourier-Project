@@ -80,6 +80,8 @@ function epiCycles(x, y, rotation, fourier) {
     // Calculate X and Y
     x += radius * cos(freq * time + phase + rotation);
     y += radius * sin(freq * time + phase + rotation);
+    
+    noFill();
   
     // Draw Circle
     if (i == 0) {
@@ -87,10 +89,9 @@ function epiCycles(x, y, rotation, fourier) {
     } else {
       stroke(255, 120);
       line(prevx, prevy, x, y)
+      ellipse(prevx, prevy, radius*2);
     }
-    noFill();
     stroke(255, 100)
-    ellipse(prevx, prevy, radius*2);
 
     // Draw Rotating Point
     stroke(255, 100)
