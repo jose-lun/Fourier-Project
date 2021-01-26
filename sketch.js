@@ -36,6 +36,9 @@ function createTextPoints() {
       tsize,
       options1);
   
+  extrapoint = {x: -61, y: 120};
+  pts.push(extrapoint);
+  
   return pts;
 }
 
