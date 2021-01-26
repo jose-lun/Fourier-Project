@@ -22,17 +22,16 @@ function createTextPoints() {
     let t = 'Paourh!';
     let tlen = t.length;
     let tw = textWidth(t);
-    let tsize = 300-30*tlen;
+    let tsize = 300-20*tlen;
     let points;
     let pointsize = 2;
     let options1 = {
-      sampleFactor: 0.12,
+      sampleFactor: 0.1,
       simplifyThreshold:0
     }
-    print(options1);
 
     pts = tracePoints(t,
-      100,
+      -100,
       100,
       tsize,
       options1);
@@ -50,7 +49,7 @@ function tracePoints(txt, x, y, sz, opt) {
 
 // SETUP: CREATE INITIAL POINT PATH, CALCULATE FOURIER
 function setup() {
-  frameRate(50)
+  frameRate(20)
   createCanvas(1000, 1000);
   
   pts = createTextPoints();
@@ -83,13 +82,12 @@ function epiCycles(x, y, rotation, fourier) {
     
     noFill();
   
-    // Draw Circle
+    //Draw Circle
     if (i == 0) {
       stroke(0);
     } else {
-      stroke(255, 120);
-      line(prevx, prevy, x, y)
-      ellipse(prevx, prevy, radius*2);
+      stroke(255, 20);
+      ellipse(prevx, prevy, radius*2)
     }
     stroke(255, 100)
 
@@ -123,7 +121,6 @@ function draw() {
   // DRAW PATH
   noFill();
   stroke(150*noise(5*time), 200*noise(1000+10*time), 250*noise(2000+15*time));
-  print(150*noise(5*time), 200*noise(1000+10*time), 250*noise(2000+15*time));
   beginShape();
   for (let i = 0; i < path.length; i++) {
     vertex(path[i].x, path[i].y)
@@ -133,7 +130,6 @@ function draw() {
   // DRAW LINES FROM CIRCLES TO PATH
   fill(125, 20, 230, 80);
   stroke(255);
-  ellipse(vx.x, vy.y, 4);
   stroke(255, 50);
   line(vx.x, vx.y, vx.x, vy.y);
   line(vy.x, vy.y, vx.x, vy.y);
@@ -143,7 +139,7 @@ function draw() {
   time += dt;
   
   // Avoid more than 500 points
-  if (path.length > 280) {
+  if (path.length > 420) {
     path.pop();
   }
 }
