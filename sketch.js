@@ -89,12 +89,12 @@ function epiCycles(x, y, rotation, fourier) {
       line(prevx, prevy, x, y)
     }
     noFill();
-    circle(prevx, prevy, radius*2);
+    ellipse(prevx, prevy, radius*2);
 
     // Draw Rotating Point
     stroke(255)
     fill(255)
-    circle(x, y, 0.5);
+    ellipse(x, y, 0.5);
   }
   return createVector(x, y);
 }
@@ -131,7 +131,7 @@ function draw() {
   // DRAW LINES FROM CIRCLES TO PATH
   fill(125, 20, 230, 80);
   stroke(255, 50);
-  circle(vx.x, vy.y, 4);
+  ellipse(vx.x, vy.y, 4);
   line(vx.x, vx.y, vx.x, vy.y);
   line(vy.x, vy.y, vx.x, vy.y);
   
