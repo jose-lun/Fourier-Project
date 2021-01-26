@@ -87,14 +87,14 @@ function epiCycles(x, y, rotation, fourier) {
       stroke(0);
     } else {
       stroke(255, 20);
-      ellipse(prevx, prevy, radius*2)
+      ellipse(prevx, prevy, radius*2, radius*2)
     }
     stroke(255, 100)
 
     // Draw Rotating Point
     stroke(255, 100)
     fill(255)
-    ellipse(x, y, 0.5);
+    ellipse(x, y, 0.5, 0.5);
   }
   return createVector(x, y);
 }
