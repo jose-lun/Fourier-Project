@@ -13,7 +13,7 @@ let step1path = [];
 let counter = 0;
 
 let totalScroll = 0;
-let scrollCoord = 1700;
+let scrollCoord = 1500;
 let visible = false;
 
 let theta1 = 0;
@@ -23,12 +23,7 @@ let ex = 300;
 let ey = 880;
 
 function mouseWheel(event) {
-
   totalScroll += event.delta;
-  if (totalScroll + windowHeight > scrollCoord) {
-    visible = true;
-  }
-
 }
 
 // PRELOADING IMAGES AND FONTS
@@ -97,7 +92,7 @@ function createTextPoints() {
 // FUNCTION FOR DRAWING OUT THE PATH IN DOTS
 function drawPath(p, xshift, yshift) {
   fill(255)
-  for (let i = 0; i < p.length; i++) {
+  for (let i = 0; i < p.length-6; i++) {
     ellipse(p[i].x + xshift, p[i].y + yshift, 2, 2);
   }
 }
@@ -203,31 +198,39 @@ function epiCycles(x, y, rotation, fourier) {
 function draw() {
   // DESIGN STUFF
   background(0);
-  textSize(32);
   textFont(bigfont);
   fill(255);
   stroke(255);
+  
+  // CHECK IF STEP 3 IS VISIBLE
+  if (totalScroll + windowHeight > scrollCoord) {
+    visible = true;
+  }
+  
+  // WRITE TITLE
+  textSize(66);
+  text("How to write Paourh's name using math", 50, 100);
+  textSize(32);
 
   // WRITE STEP 1
-  text("Step 1: Create set of points to trace out Paourh's name", 175, 100);
+  text("Step 1: Create set of points to trace out Paourh's name", 175, 250);
 
   // DRAW STEP 1
   advancePath(step1path)
-  drawPath(step1path, 300, -700);
+  drawPath(step1path, 280, -630);
 
-  // WRITE STEP 1
-  text("Step 2: Use the Discrete Fourier Transform to calculate", 175, 600);
-  text("frequency and amplitude of corresponding epicycles", 250, 640);
+  // WRITE STEP 2
+  text("Step 2: Use the Discrete Fourier Transform to calculate frequency", 125, 600);
+  text("and amplitude of corresponding epicycles", 250, 640);
 
   // DRAW STEP 2
   step2();
-
 
   // DRAW FORMULA
   image(formula, 100, 700);
 
   // WRITE STEP 3
-  text("Step 3: Superimpose epicycles to write Paourh's Name", 175, shift + 120);
+  text("Step 3: Superimpose epicycles and trace out the resulting coordinates", 100, shift + 120);
 
   // DRAW STEP 3 IF VISIBLE
   if (visible) {
