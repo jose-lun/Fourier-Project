@@ -182,7 +182,7 @@ function epiCycles(x, y, rotation, fourier) {
     if (i == 0) {
       stroke(0);
     } else {
-      stroke(255, 40);
+      stroke(255, 70);
       ellipse(prevx, prevy, radius * 2, radius * 2)
     }
     stroke(255, 100)
@@ -247,7 +247,7 @@ function step2() {
   let er3 = amplitudeSlider3.value();
   let freq3 = frequencySlider3.value();
   
-  stroke(255, 50);
+  stroke(255, 70);
   noFill();
   ellipse(ex, ey, er1, er1);
   ellipse(ex+200, ey, er2, er2);
@@ -296,6 +296,7 @@ function step3() {
 
   // DRAW PATH
   noFill();
+  strokeWeight(3);
   stroke(150 * noise(5 * time), 200 * noise(1000 + 10 * time), 250 * noise(2000 + 15 * time));
   beginShape();
   for (let i = 0; i < path.length; i++) {
@@ -305,7 +306,7 @@ function step3() {
 
   // DRAW LINES FROM CIRCLES TO PATH
   fill(125, 20, 230, 80);
-  stroke(255);
+  strokeWeight(1);
   stroke(255, 50);
   line(vx.x, vx.y, vx.x, vy.y);
   line(vy.x, vy.y, vx.x, vy.y);
